@@ -1,0 +1,21 @@
+.grid {
+    border-collapse: collapse;
+}
+
+.grid td {
+    padding: 2em;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.wall {
+    background-color: rgb(34, 34, 34) ;
+}
+
+.path {
+    background-color: rgb(229, 181, 38);
+}
+
+.inPath {
+    background-color: red;
+}

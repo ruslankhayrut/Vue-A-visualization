@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A* algo</title>
+    <link rel="stylesheet" href="theme.css" />
+</head>
+<body>
+    <div class="container" id="app">
+        <input type="number" v-model="width" placeholder="Enter grid width"><br>
+        <input type="number" v-model="height" placeholder="Enter grid height"><br>
+        <button @click="createGrid">Apply</button>
+        
+        
+        <table class="grid">
+            <tr v-for="(row, i) in grid" :key="i">
+                <td v-for="(cell, j) in row" 
+                    :key="j" 
+                    :class="[cell.isPassable ? 'path' : 'wall', cell.isInPath ? 'inPath': '']"
+                    
+                    @click="() => {grid[i][j].isPassable = !grid[i][j].isPassable}">
+                
+                
+                    <span v-if="cell && Object.is(cell, startCell)">S</span>
+                    <span v-else-if="cell && Object.is(cell, finishCell)">F</span>
+                    <span v-else>
+                        {{ cell.weight }}
+                        {{ cell.distance }}
+                    </span>
+                    
+                </td>
+                
+            </tr>
+        </table>
+        <button @click="findPath">Find path</button>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="app.js"></script>
+</body>
+</html>
