@@ -19,14 +19,21 @@
             </div>
             <button class="center" @click="createGrid">Apply</button>
             
-            
+            <div class="coord">
+                Start coord:
+                <input type="number" min="0" :max="height - 1" v-model="startRow" :disabled="isFound">
+                <input type="number" min="0" :max="width - 1" v-model="startCol" :disabled="isFound">
+                Finish coord:
+                <input type="number" min="0" :max="height - 1" v-model="finishRow" :disabled="isFound">
+                <input type="number" min="0" :max="width - 1" v-model="finishCol" :disabled="isFound">
+            </div>
             <table class="grid center">
                 <tr v-for="(row, i) in grid" :key="i">
                     <td v-for="(cell, j) in row" 
                         :key="j" 
                         :class="[cell.isPassable ? 'path' : 'wall', cell.isInPath ? 'inPath': '']"
                         
-                        @click="() => {grid[i][j].isPassable = !grid[i][j].isPassable}">
+                        @click="createOrRemoveWall(cell)">
                     
                     
                         <span v-if="cell && Object.is(cell, startCell)">S</span>

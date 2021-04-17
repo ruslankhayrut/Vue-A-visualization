@@ -20,7 +20,11 @@ const App = {
             grid: [],
             width: 5,
             height: 5,
-            isFound: false
+            isFound: false,
+            startRow: 0,
+            startCol: 0,
+            finishRow: 4,
+            finishCol: 4
         }
     },
 
@@ -37,6 +41,19 @@ const App = {
             }
         },
 
+        createOrRemoveWall(cell) {
+            if (this.are_equals(cell, this.startCell)) {
+                return alert("Can't assign wall to start cell")
+            }
+
+            if (this.are_equals(cell, this.finishCell)) {
+               return alert("Can't assign wall to finish cell")
+            }
+
+            cell.isPassable = !cell.isPassable
+            return
+        },
+
         are_equals(cell1, cell2) {
             return cell1.row == cell2.row && cell1.col == cell2.col
         },
@@ -50,7 +67,6 @@ const App = {
         },
 
         findPath() {
-            this.isFound = true
 
             var activeCell = this.startCell
 
@@ -97,18 +113,22 @@ const App = {
                 activeCell = openList[0]
             }
             this.finishCell.isInPath = true
+            this.isFound = true
             path.push(activeCell)
             console.log(path)
         }
     },
 
     computed: {
+
+
+
         startCell() {
-            return this.grid ? this.grid[0][0] : null
+            return this.grid ? this.grid[this.startRow][this.startCol] : null
         },
 
         finishCell() {
-            return this.grid ? this.grid[this.height - 1][this.width - 1] : null
+            return this.grid ? this.grid[this.finishRow][this.finishCol] : null
         }
     },
 

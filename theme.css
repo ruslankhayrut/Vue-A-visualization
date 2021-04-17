@@ -32,8 +32,11 @@ input {
     margin-left: 38%;
 }
 
-button {
+.coord {
+    margin-left: 25%;
+}
 
+button {
     width: 100px;
     height: 40px;
 }
