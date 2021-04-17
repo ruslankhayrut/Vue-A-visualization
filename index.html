@@ -9,32 +9,39 @@
 </head>
 <body>
     <div class="container" id="app">
-        <input type="number" v-model="width" placeholder="Enter grid width"><br>
-        <input type="number" v-model="height" placeholder="Enter grid height"><br>
-        <button @click="createGrid">Apply</button>
-        
-        
-        <table class="grid">
-            <tr v-for="(row, i) in grid" :key="i">
-                <td v-for="(cell, j) in row" 
-                    :key="j" 
-                    :class="[cell.isPassable ? 'path' : 'wall', cell.isInPath ? 'inPath': '']"
+        <div class="wrapper">
+            <h2 class="center">Simple A* algo visualizer</h2>
+            <div class='size'>
+                Size:
+                <input type="number" id='width' v-model="width" placeholder="Enter grid width">
+                X
+                <input type="number" id='height' v-model="height" placeholder="Enter grid height">
+            </div>
+            <button class="center" @click="createGrid">Apply</button>
+            
+            
+            <table class="grid center">
+                <tr v-for="(row, i) in grid" :key="i">
+                    <td v-for="(cell, j) in row" 
+                        :key="j" 
+                        :class="[cell.isPassable ? 'path' : 'wall', cell.isInPath ? 'inPath': '']"
+                        
+                        @click="() => {grid[i][j].isPassable = !grid[i][j].isPassable}">
                     
-                    @click="() => {grid[i][j].isPassable = !grid[i][j].isPassable}">
-                
-                
-                    <span v-if="cell && Object.is(cell, startCell)">S</span>
-                    <span v-else-if="cell && Object.is(cell, finishCell)">F</span>
-                    <span v-else>
-                        {{ cell.weight }}
-                        {{ cell.distance }}
-                    </span>
                     
-                </td>
-                
-            </tr>
-        </table>
-        <button @click="findPath">Find path</button>
+                        <span v-if="cell && Object.is(cell, startCell)">S</span>
+                        <span v-else-if="cell && Object.is(cell, finishCell)">F</span>
+                        <span v-else>
+                            {{ cell.weight }}
+                            {{ cell.distance }}
+                        </span>
+                        
+                    </td>
+                    
+                </tr>
+            </table>
+            <button class="center" @click="findPath">Find path</button>
+    </div>
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>

@@ -80,10 +80,7 @@ const App = {
 
                 for (let cell of openList) {
                     const pwFromThisCell = this.pass_weight(activeCell, cell) + activeCell.weight
-                    if (!cell.weight) {
-                        cell.weight = pwFromThisCell
-                    }
-                    else if (cell.weight > pwFromThisCell) {
+                    if (!cell.weight || cell.weight > pwFromThisCell) {
                         cell.weight = pwFromThisCell
                     }
 

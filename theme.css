@@ -1,9 +1,53 @@
+.container {
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.wrapper {
+    overflow: hidden;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    align-content: center;
+}
+
+.center {
+    display: block;
+    margin: auto;
+}
+
+h2.center {
+    text-align: center;
+}
+
+input {
+    margin: 1em;
+    width: 3em;
+    height: 30px;
+}
+
+.size {
+    margin-left: 38%;
+}
+
+button {
+
+    width: 100px;
+    height: 40px;
+}
+
+
 .grid {
     border-collapse: collapse;
+    margin: 2em auto;
+    width: max-content;
 }
 
 .grid td {
-    padding: 2em;
+    width: 4em;
+    height: 4em;
     border: 1px solid black;
     text-align: center;
 }
