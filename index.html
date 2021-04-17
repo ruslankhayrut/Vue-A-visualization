@@ -40,7 +40,7 @@
                     
                 </tr>
             </table>
-            <button class="center" @click="findPath">Find path</button>
+            <button class="center" @click="isFound ? createGrid() : findPath()">{{ isFound ? "Refresh": "FindPath" }}</button>
     </div>
     </div>
 

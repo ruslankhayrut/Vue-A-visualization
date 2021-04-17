@@ -20,11 +20,13 @@ const App = {
             grid: [],
             width: 5,
             height: 5,
+            isFound: false
         }
     },
 
     methods: {
         createGrid() {
+            this.isFound = false
             this.grid = []
             for (let row = 0; row < this.height; row++) {
                 var r = []
@@ -48,6 +50,8 @@ const App = {
         },
 
         findPath() {
+            this.isFound = true
+
             var activeCell = this.startCell
 
             var openList = []
